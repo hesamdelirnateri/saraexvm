@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آزمون جامعه‌شناسی | درس دوم</title>
+<style>
+:root{--purple:#7651d6;--purple2:#9b7cf2;--ink:#24213a;--muted:#77748a;--line:#e9e4f5;--bg:#f7f5fc;--white:#fff;--danger:#c94d68;--ok:#24845f}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#f4f0ff 0,#fbfaff 300px,#f7f7fb 100%);font-family:Tahoma,"Vazirmatn",Arial,sans-serif;color:var(--ink);line-height:1.9}
+button,input{font:inherit}
+button{cursor:pointer;border:0}
+.wrap{max-width:920px;margin:auto;padding:20px 16px 50px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
+.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--purple),#a58bf5);display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 8px 20px #7651d633}
+.pill{font-size:12px;background:#eee8ff;color:#6541c0;border-radius:99px;padding:6px 11px;font-weight:bold}
+.hero{background:linear-gradient(130deg,#6c49cb,#9578ed);color:white;border-radius:24px;padding:26px 26px 23px;box-shadow:0 14px 35px #7651d62a;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:220px;height:220px;border:34px solid #ffffff12;border-radius:50%;left:-75px;top:-100px}
+.eyebrow{font-size:12px;opacity:.85;margin-bottom:5px}
+h1{font-size:clamp(23px,4vw,32px);line-height:1.5;margin:0 0 8px}
+.hero p{margin:0;max-width:650px;color:#f0eaff;font-size:14px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.stat{border:1px solid #ffffff45;background:#ffffff13;border-radius:12px;padding:7px 12px;font-size:13px}
+.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:16px;box-shadow:0 7px 24px #34245d08}
+.panel-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.panel-title h2{font-size:17px;margin:0}
+.small{font-size:12px;color:var(--muted)}
+.security{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.security-item{display:flex;gap:10px;align-items:flex-start;background:#fbfaff;border:1px solid var(--line);border-radius:13px;padding:11px 12px;font-size:12px}
+.security-item .ico{font-size:17px}
+.notice{margin-top:12px;background:#fff7e9;color:#865b18;border:1px solid #f5e2b7;padding:10px 12px;border-radius:12px;font-size:12px}
+.progress-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.progress{height:8px;background:#eeeaf7;border-radius:99px;overflow:hidden;flex:1}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--purple2));transition:width .25s}
+.qnav{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 16px}
+.qdot{width:34px;height:34px;border-radius:10px;background:#f5f2fb;color:#79728c;border:1px solid #ebe5f6;font-size:12px}
+.qdot.answered{background:#eee8ff;color:#5c3cb5;border-color:#cfc0ff;font-weight:bold}
+.qdot.current{outline:2px solid var(--purple);outline-offset:1px}
+.question{font-size:19px;font-weight:800;line-height:1.9;margin:10px 0 18px}
+.option{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:right;background:#fff;border:1.5px solid #e9e5f2;border-radius:14px;padding:13px 14px;margin:9px 0;color:var(--ink);transition:.15s}
+.option:hover{border-color:#b8a6f3;background:#fcfaff}
+.option.selected{border-color:var(--purple);background:#f4f0ff;box-shadow:0 0 0 2px #7651d611}
+.letter{flex:0 0 28px;height:28px;border-radius:9px;background:#f0edf7;color:#746b8a;display:grid;place-items:center;font-size:12px;font-weight:bold}
+.option.selected .letter{background:var(--purple);color:#fff}
+.navrow{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
+.btn{border-radius:12px;padding:11px 17px;font-weight:bold;font-size:14px;transition:.15s}
+.btn.primary{background:var(--purple);color:white;box-shadow:0 6px 15px #7651d626}
+.btn.primary:hover{background:#6340c1}
+.btn.secondary{background:#f2eff9;color:#5f5577}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.finish-row{display:flex;justify-content:center;margin-top:20px}
+.finish{background:#25213b;color:white;padding:13px 24px;border-radius:13px;font-weight:bold}
+.hidden{display:none!important}
+.result{text-align:center;padding:26px 20px}
+.score-ring{width:150px;height:150px;border-radius:50%;border:10px solid #eee8ff;background:#faf8ff;display:grid;place-items:center;margin:15px auto;color:var(--purple)}
+.score-ring strong{font-size:36px;line-height:1.2}
+.score-ring span{font-size:12px;color:var(--muted)}
+.result h2{font-size:25px;margin:8px 0}
+.result p{color:var(--muted);margin:6px 0 18px}
+.review{margin-top:15px;text-align:right}
+.review-item{border:1px solid var(--line);border-radius:13px;padding:13px;margin:9px 0}
+.review-item.correct{border-right:4px solid var(--ok)}
+.review-item.wrong{border-right:4px solid var(--danger)}
+.review-item strong{display:block;margin-bottom:5px}
+.review-item .answer{font-size:13px;color:var(--muted)}
+footer{text-align:center;color:#9691a5;font-size:11px;margin-top:22px}
+@media(max-width:600px){.wrap{padding:12px 10px 35px}.hero{padding:21px 18px}.panel{padding:15px}.security{grid-template-columns:1fr}.question{font-size:17px}.navrow .btn{padding:10px 12px}.top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><div class="logo">آ</div><span>آزمون‌یار</span></div>
+    <span class="pill">آزمون آنلاین</span>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">جامعه‌شناسی دهم · درس دوم</div>
+    <h1>پدیده‌های اجتماعی؛ آنچه با هم پدید می‌آوریم</h1>
+    <p>آزمون چهارگزینه‌ای مفهومی از متن درس. هر سؤال ۱ نمره دارد؛ با دقت بخوان و فقط یک گزینه را انتخاب کن.</p>
+    <div class="stats">
+      <div class="stat">۲۰ سؤال</div><div class="stat">نمره از ۲۰</div><div class="stat">بدون نمره منفی</div>
+    </div>
+  </section>
+
+  <section class="panel" id="securityPanel">
+    <div class="panel-title"><h2>🛡️ پنل ضدتقلب</h2><span class="pill">فعال</span></div>
+    <div class="security">
+      <div class="security-item"><span class="ico">👁️</span><div><b>تشخیص خروج از صفحه</b><br><span class="small">رفتن به تب دیگر یا کوچک‌کردن پنجره ثبت می‌شود.</span></div></div>
+      <div class="security-item"><span class="ico">⛶</span><div><b>حالت تمام‌صفحه</b><br><span class="small">می‌توانی آزمون را در حالت تمام‌صفحه اجرا کنی.</span></div></div>
+      <div class="security-item"><span class="ico">🧭</span><div><b>ثبت هشدارها</b><br><span class="small">تعداد خروج‌ها در نتیجه نهایی نمایش داده می‌شود.</span></div></div>
+      <div class="security-item"><span class="ico">🔒</span><div><b>یک پاسخ برای هر سؤال</b><br><span class="small">برای هر سؤال فقط یک گزینه قابل انتخاب است.</span></div></div>
+    </div>
+    <div class="notice">توجه: این پنل فقط هشدارهای داخل مرورگر را ثبت می‌کند؛ در یک فایل HTML ساده، جلوگیری قطعی از تقلب یا دست‌کاری پاسخ‌ها ممکن نیست.</div>
+    <div class="navrow">
+      <button class="btn secondary" id="fullBtn" type="button">⛶ تمام‌صفحه</button>
+      <button class="btn primary" id="startBtn" type="button">شروع آزمون ←</button>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="quizPanel">
+    <div class="progress-row">
+      <b id="qCount">سؤال ۱ از ۲۰</b>
+      <span class="small" id="answeredCount">پاسخ داده‌شده: ۰ از ۲۰</span>
+    </div>
+    <div class="progress"><span id="progressFill"></span></div>
+    <div class="qnav" id="qnav" aria-label="رفتن به سؤال"></div>
+    <div id="questionText" class="question"></div>
+    <div id="options"></div>
+    <div class="navrow">
+      <button class="btn secondary" id="prevBtn" type="button">→ سؤال قبل</button>
+      <button class="btn primary" id="nextBtn" type="button">سؤال بعد ←</button>
+    </div>
+    <div class="finish-row"><button class="finish" id="finishBtn" type="button">ثبت نهایی و مشاهده نمره</button></div>
+  </section>
+
+  <section class="panel hidden result" id="resultPanel">
+    <div class="pill">نتیجه آزمون</div>
+    <div class="score-ring"><div><strong id="score">۰</strong><br><span>از ۲۰</span></div></div>
+    <h2 id="resultTitle">آزمون تمام شد</h2>
+    <p id="resultDesc"></p>
+    <div class="stats" style="justify-content:center">
+      <div class="stat" style="background:#f3efff;color:#5f42b6;border-color:#e4dcff">درست: <b id="correctNum">۰</b></div>
+      <div class="stat" style="background:#fff0f2;color:#b13e58;border-color:#f8d9df">نادرست/بی‌پاسخ: <b id="wrongNum">۰</b></div>
+      <div class="stat" style="background:#f5f3fa;color:#625b76;border-color:#e8e3f1">هشدار خروج: <b id="cheatNum">۰</b></div>
+    </div>
+    <div class="navrow" style="justify-content:center"><button class="btn primary" id="reviewBtn" type="button">دیدن پاسخ‌ها</button><button class="btn secondary" id="retryBtn" type="button">آزمون دوباره</button></div>
+    <div class="review hidden" id="review"></div>
+  </section>
+  <footer>آزمون تمرینی بر اساس متن PDF ارسالی · هر پاسخ صحیح = ۱ نمره</footer>
+</div>
+<script>
+const rawQuestions = [
+ {q:"کدام گزینه تعریف دقیق «کنش اجتماعی» مطابق متن درس است؟",o:["هر رفتاری که در حضور فیزیکی دیگران انجام شود","کنشی که با توجه به دیگران انجام می‌شود","هر حرکت غیرارادی بدن","هر کاری که فقط در مکان عمومی انجام شود"],a:1},
+ {q:"کدام مورد نمونه‌ای از کنش درونی است؟",o:["راه رفتن در خیابان","نشستن روی صندلی","تفکر و خیال‌پردازی","سلام کردن به همکلاسی"],a:2},
+ {q:"کدام گزینه نمونه‌ای از کنش بیرونی است؟",o:["تخیل کردن","فکر کردن","به یاد آوردن یک خاطره در ذهن","راه رفتن"],a:3},
+ {q:"آیا کنش اجتماعی حتماً به حضور فیزیکی دیگران نیاز دارد؟",o:["بله، همیشه","فقط در خانواده","خیر؛ توجه به دیگران کافی است، حتی اگر حاضر نباشند","فقط در محیط مدرسه"],a:2},
+ {q:"راننده‌ای نیمه‌شب و بدون حضور دیگران پشت چراغ قرمز می‌ایستد. چرا کنش او اجتماعی است؟",o:["چون رانندگی کنشی درونی است","چون مقررات مورد قبول دیگران را رعایت می‌کند","چون دوربین حتماً او را می‌بیند","چون چراغ قرمز پدیده‌ای طبیعی است"],a:1},
+ {q:"فردی در کلاس حضور دارد اما بدون توجه به اطرافیان، در ذهن خود رودخانه‌ای را تصور می‌کند. طبق متن، این کنش اجتماعی است؟",o:["بله، چون در جمع است","بله، چون هر تخیلی اجتماعی است","خیر، چون صرف حضور دیگران کافی نیست","خیر، چون تخیل کنش بیرونی است"],a:2},
+ {q:"چگونه یک کنش فردی می‌تواند به کنش اجتماعی تبدیل شود؟",o:["با تکرار شدن در تنهایی","وقتی فرد هنگام انجام آن، دیگران را در نظر بگیرد","وقتی به‌صورت غیرارادی انجام شود","وقتی هیچ پیامدی نداشته باشد"],a:1},
+ {q:"خردترین یا کوچک‌ترین پدیده اجتماعی کدام است؟",o:["خانواده","مدرسه","هنجار اجتماعی","کنش اجتماعی"],a:3},
+ {q:"طبق کتاب، پدیده اجتماعی به چه چیزی گفته می‌شود؟",o:["فقط ساختمان‌ها و مکان‌های عمومی","کنش اجتماعی و پیامدهای آن","هر اتفاق طبیعی در محیط","رفتارهایی که هیچ معنایی ندارند"],a:1},
+ {q:"هنجار اجتماعی چیست؟",o:["هدف مطلوبی که همه آرزویش را دارند","شیوه انجام کنش اجتماعی که مورد قبول افراد جامعه قرار گرفته است","هر قانونی که فقط پلیس اجرا می‌کند","رفتاری که فقط یک فرد انجام می‌دهد"],a:1},
+ {q:"کدام مورد نمونه‌ای از هنجار اجتماعی است؟",o:["عدالت","آزادی","شیوه معمول احوال‌پرسی با دیگران","امنیت"],a:2},
+ {q:"ارزش‌های اجتماعی در متن کتاب به چه معنا هستند؟",o:["پدیده‌های مطلوب و خواستنی که مورد توجه و پذیرش جامعه‌اند","روش‌های جزئی انجام یک رفتار","مقررات طبیعی آب‌وهوا","هر رفتاری که از روی اجبار انجام شود"],a:0},
+ {q:"رابطه ارزش و هنجار کدام است؟",o:["ارزش وسیله است و هنجار هدف","هر دو دقیقاً یک معنا دارند","ارزش هدف و مقصود است و هنجار روش رسیدن به آن","هنجارها بدون هیچ کنشی شکل می‌گیرند"],a:2},
+ {q:"در مثال مطالعه با صدای بلند، وقتی فرد دیگری وارد می‌شود، آرام مطالعه کردن بیشتر بیانگر چیست؟",o:["تحقق ارزش رعایت حقوق دیگری از راه یک هنجار","پدیده‌ای طبیعی و مستقل از انسان","کنشی کاملاً درونی","از بین رفتن ارزش‌ها"],a:0},
+ {q:"ارزش‌ها و هنجارهای اجتماعی از چه راه‌هایی به افراد منتقل می‌شوند؟",o:["فقط از راه وراثت زیستی","از طریق جامعه‌پذیری و کنترل اجتماعی، از جمله تعلیم‌وتربیت، تشویق و تنبیه","فقط از طریق رسانه‌ها","بدون ارتباط با کنش‌های انسان"],a:1},
+ {q:"چرا پدیده‌های اجتماعی معنادار هستند؟",o:["چون مانند کوه به‌طور طبیعی به وجود می‌آیند","چون انسان‌ها با آگاهی، اراده و هدف و در ارتباط با یکدیگر آن‌ها را پدید می‌آورند","چون هیچ تغییری نمی‌کنند","چون فقط قابل مشاهده‌اند"],a:1},
+ {q:"چرا گاهی افراد پدیده‌های اجتماعی را مانند پدیده‌های طبیعی تصور می‌کنند؟",o:["چون پدیده‌های اجتماعی را انسان‌ها خلق نکرده‌اند","چون پدیده‌های اجتماعی هیچ اثری بر زندگی ندارند","چون پدیده‌های اجتماعی به‌مرور مستقل به نظر می‌رسند و فرصت‌ها و محدودیت‌هایی ایجاد می‌کنند","چون پدیده‌های طبیعی از کنش انسان ساخته می‌شوند"],a:2},
+ {q:"کدام عبارت درباره رابطه «من» و «ما» با متن درس سازگارتر است؟",o:["با تشکیل «ما»، افراد کاملاً از بین می‌روند","«من»ها درون «ما» حل نمی‌شوند؛ با پیوند به یکدیگر از محدوده فردی فراتر می‌روند","«ما» فقط به معنی یک فرد تنهاست","هر نوع همکاری الزاماً پیامد مثبت دارد"],a:1},
+ {q:"کدام مورد از ویژگی‌هایی است که فرزندان در خانواده‌های چندفرزندی ممکن است در تعامل با یکدیگر بیاموزند؟",o:["پرهیز از هرگونه همکاری","تقسیم کار، تعاون و همکاری","بی‌نیازی از ارتباط با دیگران","نادیده گرفتن تفاوت‌ها"],a:1},
+ {q:"طبق متن، رشد طبیعی جمعیت چه زمانی مثبت است؟",o:["وقتی تعداد مرگ‌ومیر از تولد بیشتر باشد","وقتی تعداد تولد نسبت به مرگ‌ومیر بیشتر باشد","وقتی تولد و مرگ‌ومیر هر دو صفر باشند","وقتی تعداد سالمندان از جوانان بیشتر شود"],a:1}
+];
+// Shuffle question order and option order, preserving correct answers.
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+function prepare(){return shuffle(rawQuestions.map(item=>{let opts=item.o.map((t,i)=>({t,correct:i===item.a}));shuffle(opts);return {q:item.q,o:opts.map(x=>x.t),a:opts.findIndex(x=>x.correct)}}))}
+let questions=prepare(), answers=Array(20).fill(null), current=0, exits=0, started=false, finished=false;
+const $=id=>document.getElementById(id);
+const persianDigits=n=>String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[+d]);
+function render(){
+ const q=questions[current]; $("qCount").textContent=`سؤال ${persianDigits(current+1)} از ۲۰`;
+ $("answeredCount").textContent=`پاسخ داده‌شده: ${persianDigits(answers.filter(x=>x!==null).length)} از ۲۰`;
+ $("progressFill").style.width=(answers.filter(x=>x!==null).length/20*100)+"%";
+ $("questionText").textContent=q.q;
+ $("options").innerHTML="";
+ const letters=["الف","ب","ج","د"];
+ q.o.forEach((op,i)=>{const b=document.createElement("button");b.type="button";b.className="option"+(answers[current]===i?" selected":"");b.innerHTML=`<span class="letter">${letters[i]}</span><span>${op}</span>`;b.onclick=()=>{if(finished)return;answers[current]=i;render()};$("options").appendChild(b)});
+ $("prevBtn").disabled=current===0;$("nextBtn").disabled=current===19;
+ $("qnav").innerHTML="";
+ for(let i=0;i<20;i++){const b=document.createElement("button");b.type="button";b.className="qdot"+(answers[i]!==null?" answered":"")+(i===current?" current":"");b.textContent=persianDigits(i+1);b.title="رفتن به سؤال "+(i+1);b.onclick=()=>{current=i;render()};$("qnav").appendChild(b)}
+}
+$("startBtn").onclick=()=>{$("securityPanel").classList.add("hidden");$("quizPanel").classList.remove("hidden");started=true;render();window.scrollTo({top:0,behavior:"smooth"})};
+$("prevBtn").onclick=()=>{if(current>0){current--;render()}};
+$("nextBtn").onclick=()=>{if(current<19){current++;render()}};
+$("fullBtn").onclick=async()=>{try{if(!document.fullscreenElement){await document.documentElement.requestFullscreen()}else{await document.exitFullscreen()}}catch(e){alert("مرورگر اجازه تمام‌صفحه نداد؛ می‌توانی آزمون را عادی ادامه بدهی.")}};
+document.addEventListener("visibilitychange",()=>{if(started&&!finished&&document.hidden){exits++;}});
+window.addEventListener("blur",()=>{if(started&&!finished)exits++;});
+document.addEventListener("contextmenu",e=>{if(started&&!finished)e.preventDefault()});
+document.addEventListener("copy",e=>{if(started&&!finished)e.preventDefault()});
+$("finishBtn").onclick=()=>{
+ if(finished)return;
+ const blank=answers.filter(x=>x===null).length;
+ if(blank>0&&!confirm(`هنوز ${blank} سؤال بی‌پاسخ است. آزمون را ثبت می‌کنی؟`))return;
+ finished=true;
+ let correct=0;questions.forEach((q,i)=>{if(answers[i]===q.a)correct++});
+ $("quizPanel").classList.add("hidden");$("resultPanel").classList.remove("hidden");
+ $("score").textContent=persianDigits(correct);$("correctNum").textContent=persianDigits(correct);$("wrongNum").textContent=persianDigits(20-correct);$("cheatNum").textContent=persianDigits(exits);
+ $("resultTitle").textContent=correct>=18?"عالی بود!":correct>=15?"خیلی خوب!":correct>=10?"خوب است؛ مرور کن":"یک بار دیگر درس را مرور کن";
+ $("resultDesc").textContent=`از ۲۰ سؤال، ${persianDigits(correct)} پاسخ صحیح دادی. نمره نهایی تو ${persianDigits(correct)} از ۲۰ است.`;
+ window.scrollTo({top:0,behavior:"smooth"});
+};
+$("reviewBtn").onclick=()=>{const r=$("review");r.classList.toggle("hidden");$("reviewBtn").textContent=r.classList.contains("hidden")?"دیدن پاسخ‌ها":"بستن پاسخ‌ها";if(!r.dataset.built){questions.forEach((q,i)=>{const ok=answers[i]===q.a;const div=document.createElement("div");div.className="review-item "+(ok?"correct":"wrong");const chosen=answers[i]===null?"بدون پاسخ":q.o[answers[i]];div.innerHTML=`<strong>${persianDigits(i+1)}. ${q.q}</strong><div class="answer">پاسخ شما: ${chosen}<br>پاسخ صحیح: ${q.o[q.a]}</div>`;r.appendChild(div)});r.dataset.built="1"}};
+$("retryBtn").onclick=()=>{questions=prepare();answers=Array(20).fill(null);current=0;exits=0;started=false;finished=false;$("resultPanel").classList.add("hidden");$("securityPanel").classList.remove("hidden");$("review").innerHTML="";$("review").classList.add("hidden");$("review").dataset.built="";window.scrollTo({top:0,behavior:"smooth"})};
+</script>
+</body>
+</html>
